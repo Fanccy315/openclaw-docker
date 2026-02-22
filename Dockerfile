@@ -21,16 +21,13 @@ RUN npm install -g npm@latest
 # Install playwright chromium deps
 RUN npx playwright install-deps chromium
 
+# Prepare to install homebrew
+RUN useradd --create-home linuxbrew
+RUN echo 'linuxbrew ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
+
 # Copy launch script
 COPY ./launch.sh /usr/local/bin/launch.sh
 RUN chmod +x /usr/local/bin/launch.sh
-
-# Install homebrew
-RUN useradd --create-home linuxbrew
-RUN echo 'linuxbrew ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
-USER linuxbrew
-RUN NONINTERACTIVE=1 curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh | bash
-ENV PATH="/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:${PATH}"
 
 
 USER node
@@ -38,6 +35,10 @@ WORKDIR /home/node
 
 RUN npm config set prefix '/app'
 ENV PATH="/app/bin:${PATH}"
+
+# Install homebrew
+RUN NONINTERACTIVE=1 curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh | bash
+ENV PATH="/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:${PATH}"
 
 # Install openclaw
 RUN npm install -g openclaw@latest
