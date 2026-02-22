@@ -21,6 +21,10 @@ RUN npm install -g npm@latest
 # Install playwright chromium deps
 RUN npx playwright install-deps chromium
 
+# Copy launch script
+COPY ./launch.sh /usr/local/bin/launch.sh
+RUN chmod +x /usr/local/bin/launch.sh
+
 # Install homebrew
 RUN useradd --create-home linuxbrew
 RUN echo 'linuxbrew ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
@@ -47,9 +51,6 @@ RUN mkdir -p /home/node/.openclaw/extensions && \
     cd openclaw-wechat && \
     npm install && \
     openclaw plugins install -l .
-
-COPY ./launch.sh /usr/local/bin/launch.sh
-RUN chmod +x /usr/local/bin/launch.sh
 
 EXPOSE 18789 18790
 ENTRYPOINT ["/bin/bash", "/usr/local/bin/launch.sh"]
