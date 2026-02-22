@@ -2,6 +2,7 @@ services:
   gateway:
     image: ${OPENCLAW_IMAGE}
     restart: unless-stopped
+    user: 0:0
     environment:
       TZ: Asia/Shanghai
       TERM: xterm-256color
