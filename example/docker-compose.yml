@@ -1,0 +1,30 @@
+services:
+  gateway:
+    image: ${OPENCLAW_IMAGE}
+    restart: unless-stopped
+    environment:
+      TZ: Asia/Shanghai
+      TERM: xterm-256color
+      HOME: /home/node
+    volumes:
+      - ${OPENCLAW_HOME}:/home/root/.openclaw
+      # 使用匿名卷排除extensions目录，使用镜像中预装的插件
+      - /home/root/.openclaw/extensions
+    ports:
+      - "18789:18789"
+      - "18790:18790"
+    init: true
+
+  cli:
+    image: ${OPENCLAW_IMAGE}
+    environment:
+      TZ: Asia/Shanghai
+      TERM: xterm-256color
+      HOME: /home/node
+    volumes:
+      - ${OPENCLAW_HOME}:/home/root/.openclaw
+      - /home/root/.openclaw/extensions
+    stdin_open: true
+    tty: true
+    init: true
+    entrypoint: ["openclaw"]
