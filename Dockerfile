@@ -23,8 +23,8 @@ RUN npx playwright install-deps chromium
 
 # Install homebrew
 RUN useradd --create-home linuxbrew
-USER linuxbrew
 RUN echo 'linuxbrew ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
+USER linuxbrew
 RUN NONINTERACTIVE=1 curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh | bash
 ENV PATH="/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:${PATH}"
 
