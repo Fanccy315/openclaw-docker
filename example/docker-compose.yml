@@ -7,9 +7,9 @@ services:
       TERM: xterm-256color
       HOME: /home/node
     volumes:
-      - ${OPENCLAW_HOME}:/home/root/.openclaw
+      - ${OPENCLAW_HOME}:/home/node/.openclaw
       # 使用匿名卷排除extensions目录，使用镜像中预装的插件
-      - /home/root/.openclaw/extensions
+      - /home/node/.openclaw/extensions
     ports:
       - "18789:18789"
       - "18790:18790"
@@ -22,8 +22,8 @@ services:
       TERM: xterm-256color
       HOME: /home/node
     volumes:
-      - ${OPENCLAW_HOME}:/home/root/.openclaw
-      - /home/root/.openclaw/extensions
+      - ${OPENCLAW_HOME}:/home/node/.openclaw
+      - /home/node/.openclaw/extensions
     stdin_open: true
     tty: true
     init: true
