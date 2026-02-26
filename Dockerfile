@@ -44,7 +44,7 @@ RUN NONINTERACTIVE=1 curl -fsSL https://raw.githubusercontent.com/Homebrew/insta
 ENV PATH="/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:${PATH}"
 
 # Install openclaw
-RUN npm install -g openclaw@latest
+RUN npm install -g openclaw@2026.2.25
 RUN npm install -g playwright && npx playwright install chromium
 RUN npm install -g playwright-extra puppeteer-extra-plugin-stealth
 
