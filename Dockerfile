@@ -48,13 +48,16 @@ RUN npm install -g openclaw@latest
 RUN npm install -g playwright && npx playwright install chromium
 RUN npm install -g playwright-extra puppeteer-extra-plugin-stealth
 
-# Install plugin-Xueheng-Li/openclaw-wechat
-RUN mkdir -p /home/node/.openclaw/extensions && \
-    cd /home/node/.openclaw/extensions && \
+# Install plugin
+RUN mkdir -p /home/node/.openclaw/extensions
+# Xueheng-Li/openclaw-wechat
+RUN cd /home/node/.openclaw/extensions && \
     git clone https://github.com/Xueheng-Li/openclaw-wechat.git && \
     cd openclaw-wechat && \
     npm install && \
     openclaw plugins install -l .
+# QQ bot
+RUN openclaw plugins install @sliverp/qqbot@latest
 
 EXPOSE 18789 18790
 ENTRYPOINT ["/bin/bash", "/usr/local/bin/launch.sh"]
