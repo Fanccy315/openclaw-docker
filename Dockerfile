@@ -9,6 +9,8 @@ RUN chown node:node /app
 RUN apt-get update
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
     build-essential procps curl file git \
+    chromium ca-certificates xvfb \
+    fonts-liberation fonts-noto-cjk fonts-noto-color-emoji \
     sudo \
     gosu \
     python3 \
