@@ -52,12 +52,6 @@ RUN npm install -g playwright-extra puppeteer-extra-plugin-stealth
 
 # Install plugin
 RUN mkdir -p /home/node/.openclaw/extensions
-# Xueheng-Li/openclaw-wechat
-RUN cd /home/node/.openclaw/extensions && \
-    git clone https://github.com/Xueheng-Li/openclaw-wechat.git && \
-    cd openclaw-wechat && \
-    npm install && \
-    openclaw plugins install -l .
 # QQ bot
 RUN openclaw plugins install @sliverp/qqbot@latest
 
