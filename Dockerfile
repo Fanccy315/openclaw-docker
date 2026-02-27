@@ -9,8 +9,6 @@ RUN chown node:node /app
 RUN apt-get update
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
     build-essential procps curl file git \
-    chromium ca-certificates xvfb \
-    fonts-liberation fonts-noto-cjk fonts-noto-color-emoji \
     sudo \
     gosu \
     python3 \
@@ -47,8 +45,7 @@ ENV PATH="/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:${PATH}
 
 # Install openclaw
 RUN npm install -g openclaw@2026.2.26
-RUN npm install -g playwright && npx playwright install chromium
-RUN npm install -g playwright-extra puppeteer-extra-plugin-stealth
+RUN npm install -g playwright && node /app/lib/node_modules/playwright/cli.js install chromium
 
 # Install plugin
 RUN mkdir -p /home/node/.openclaw/extensions
