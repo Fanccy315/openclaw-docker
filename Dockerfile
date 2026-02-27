@@ -1,4 +1,4 @@
-FROM node:22-bookworm
+FROM node:22-slim
 
 RUN corepack enable
 
@@ -14,7 +14,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
     sudo \
     gosu \
     python3 \
-    unzip
+    unzip jq ripgrep
 RUN rm -rf /var/lib/apt/lists/* /var/cache/apt/archives/*
 
 # Update npm
