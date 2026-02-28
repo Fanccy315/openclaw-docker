@@ -6,27 +6,24 @@ WORKDIR /app
 RUN chown node:node /app
 
 # Install deps
-RUN apt-get update
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+RUN apt-get update && \
+    DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
     build-essential procps curl file git ca-certificates \
     sudo \
     gosu \
     python3 \
-    unzip jq ripgrep
-RUN rm -rf /var/lib/apt/lists/* /var/cache/apt/archives/*
-
-# Update npm
-RUN npm install -g npm@latest
+    unzip jq ripgrep && \
+    rm -rf /var/lib/apt/lists/* /var/cache/apt/archives/*
 
 # Install playwright chromium deps
 RUN npx playwright install-deps chromium
 
 # Prepare to install homebrew
-RUN useradd --create-home linuxbrew
-RUN echo 'linuxbrew ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
-RUN usermod -aG linuxbrew node
-RUN chmod g+w /home/linuxbrew
-RUN chmod g+s /home/linuxbrew
+RUN userade --create-home linuxbrew && \
+    echo 'linuxbrew ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers && \
+    usermod -aG linuxbrew node && \
+    chmod g+w /home/linuxbrew && \
+    chmod g+s /home/linuxbrew
 
 # Copy launch script
 COPY ./launch.sh /usr/local/bin/launch.sh
