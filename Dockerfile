@@ -8,7 +8,7 @@ RUN chown node:node /app
 # Install deps
 RUN apt-get update
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
-    build-essential procps curl file git \
+    build-essential procps curl file git ca-certificates \
     sudo \
     gosu \
     python3 \
