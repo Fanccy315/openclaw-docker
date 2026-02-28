@@ -5,7 +5,7 @@ RUN corepack enable
 WORKDIR /app
 RUN chown node:node /app
 
-# Install deps (merged RUN commands to reduce layers)
+# Install deps
 RUN apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
     build-essential procps curl file git ca-certificates \
