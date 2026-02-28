@@ -51,6 +51,8 @@ RUN npm install -g playwright && node /app/lib/node_modules/playwright/cli.js in
 RUN mkdir -p /home/node/.openclaw/extensions
 # QQ bot
 RUN openclaw plugins install @sliverp/qqbot@latest
+# Fei Shu
+RUN openclaw plugins enable feishu
 
 EXPOSE 18789 18790
 ENTRYPOINT ["/bin/bash", "/usr/local/bin/launch.sh"]
