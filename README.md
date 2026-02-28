@@ -10,6 +10,37 @@
 - 预装 OpenClaw 及其插件（QQ Bot、飞书等）
 - 提供 `docker-compose.yml` 示例配置
 
+## GitHub Actions 自动构建
+
+本仓库已配置 GitHub Actions 工作流，可自动构建并部署 Docker 镜像到服务器。
+
+### 触发构建
+
+构建会在以下情况触发：
+- 修改 `version.txt` 文件并推送到 `main` 分支
+- 手动触发（在 GitHub Actions 页面选择 `workflow_dispatch`）
+
+### 配置 Secrets（用于自动部署）
+
+如需使用 `Push Image to Server` 功能，需要在仓库设置中配置以下 Secrets：
+
+| Secret 名称 | 说明 | 示例 |
+|-----------|------|------|
+| `IMAGE_DIR_PATH` | 服务器上镜像保存的目录路径 | `/path/to/docker/images` |
+| `SSH_HOST` | SSH 服务器地址 | `192.168.1.100` 或 `example.com` |
+| `SSH_PORT` | SSH 端口 | `22` |
+| `SSH_USERNAME` | SSH 用户名 | `root` 或 `ubuntu` |
+| `SSH_PRIVATE_KEY` | SSH 私钥（完整内容） | `-----BEGIN OPENSSH PRIVATE KEY-----\\n...` |
+
+配置路径：`Settings` → `Secrets and variables` → `Actions` → `New repository secret`
+
+### 工作流说明
+
+工作流包含两个 Job：
+1. **Build**: 构建 Docker 镜像并导出为 `.tar` 文件
+2. **Deploy**: 将镜像上传到服务器并自动重启 docker compose
+
+
 ## 快速开始
 
 ### 1. 克隆或 Fork 本仓库

@@ -10,6 +10,37 @@ This is a Docker template project for OpenClaw. You can fork this repository and
 - Pre-installed OpenClaw and its plugins (QQ Bot, Feishu, etc.)
 - Example `docker-compose.yml` configuration provided
 
+## GitHub Actions Auto Build
+
+This repository is configured with GitHub Actions workflow to automatically build and deploy Docker images to your server.
+
+### Triggering a Build
+
+Builds are triggered when:
+- The `version.txt` file is modified and pushed to the `main` branch
+- Manually triggered (select `workflow_dispatch` on GitHub Actions page)
+
+### Configuring Secrets (for Auto Deployment)
+
+To use the `Push Image to Server` feature, configure the following Secrets in your repository settings:
+
+| Secret Name | Description | Example |
+|-------------|-------------|---------|
+| `IMAGE_DIR_PATH` | Directory path on server to save images | `/path/to/docker/images` |
+| `SSH_HOST` | SSH server address | `192.168.1.100` or `example.com` |
+| `SSH_PORT` | SSH port | `22` |
+| `SSH_USERNAME` | SSH username | `root` or `ubuntu` |
+| `SSH_PRIVATE_KEY` | SSH private key (full content) | `-----BEGIN OPENSSH PRIVATE KEY-----\\n...` |
+
+Configuration path: `Settings` → `Secrets and variables` → `Actions` → `New repository secret`
+
+### Workflow Description
+
+The workflow includes two jobs:
+1. **Build**: Builds the Docker image and exports it as a `.tar` file
+2. **Deploy**: Uploads the image to the server and automatically restarts docker compose
+
+
 ## Quick Start
 
 ### 1. Clone or Fork This Repository
