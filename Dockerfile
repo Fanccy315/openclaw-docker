@@ -19,7 +19,7 @@ RUN apt-get update && \
 RUN npx playwright install-deps chromium
 
 # Prepare to install homebrew
-RUN userade --create-home linuxbrew && \
+RUN useradd --create-home linuxbrew && \
     echo 'linuxbrew ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers && \
     usermod -aG linuxbrew node && \
     chmod g+w /home/linuxbrew && \
