@@ -1,6 +1,7 @@
 #!/bin/bash
 set -e
 
+HOME="/home/node"
 OPENCLAW_HOME="$HOME/.openclaw"
 
 # Ensure the directory exists and has the correct permissions
