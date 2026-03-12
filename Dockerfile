@@ -49,7 +49,8 @@ RUN mkdir -p /home/node/.openclaw/extensions
 # QQ bot
 RUN openclaw plugins install @sliverp/qqbot@latest
 # Matrix
-RUN openclaw plugins install @openclaw/matrix
+RUN npm install -g @vector-im/matrix-bot-sdk && \
+    openclaw plugins install @openclaw/matrix
 
 EXPOSE 18789 18790
 ENTRYPOINT ["/bin/bash", "/usr/local/bin/launch.sh"]
