@@ -9,7 +9,7 @@
 - 基于 Node.js 22，安装了最新版 OpenClaw
 - 预装插件：
   - QQ Bot (@sliverp/qqbot)
-  - 飞书 (Feishu/Lark 内置)
+  - Matrix (@openclaw/matrix)
 - 集成 Homebrew 用于额外软件包管理
 - 提供即用型 docker-compose 示例
 

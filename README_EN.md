@@ -9,7 +9,7 @@
 - Based on Node.js 22 with latest OpenClaw installed
 - Pre-installed plugins:
   - QQ Bot (@sliverp/qqbot)
-  - Feishu (Feishu/Lark built-in)
+  - Matrix (@openclaw/matrix)
 - Homebrew for additional package management
 - Ready-to-use docker-compose example
 
@@ -112,13 +112,13 @@ You can also manually trigger this workflow.
 
 To use the automatic deployment job, configure the following GitHub repository secrets (Actions secrets):
 
-| Secret Name       | Description                                                  |
-| ----------------- | ------------------------------------------------------------ |
-| `SSH_HOST`        | Your server's IP address or hostname                        |
-| `SSH_PORT`        | SSH port (default: 22)                                      |
-| `SSH_USERNAME`    | SSH username                                                |
-| `SSH_PRIVATE_KEY` | SSH private key for authentication                          |
-| `IMAGE_DIR_PATH`  | Target directory path on your server for the image file     |
+| Secret Name       | Description                                             |
+| ----------------- | ------------------------------------------------------- |
+| `SSH_HOST`        | Your server's IP address or hostname                    |
+| `SSH_PORT`        | SSH port (default: 22)                                  |
+| `SSH_USERNAME`    | SSH username                                            |
+| `SSH_PRIVATE_KEY` | SSH private key for authentication                      |
+| `IMAGE_DIR_PATH`  | Target directory path on your server for the image file |
 
 ## Container Architecture
 
