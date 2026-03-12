@@ -12,7 +12,7 @@ RUN apt-get update && \
     sudo \
     gosu \
     python3 \
-    unzip jq ripgrep && \
+    ffmpeg unzip jq ripgrep && \
     rm -rf /var/lib/apt/lists/* /var/cache/apt/archives/*
 
 # Install playwright chromium deps
@@ -50,6 +50,7 @@ RUN mkdir -p /home/node/.openclaw/extensions
 RUN openclaw plugins install @sliverp/qqbot@latest
 # Matrix
 RUN npm install -g @vector-im/matrix-bot-sdk && \
+    npm install -g @matrix-org/matrix-sdk-crypto-nodejs && \
     openclaw plugins install @openclaw/matrix
 
 EXPOSE 18789 18790
