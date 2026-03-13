@@ -41,7 +41,7 @@ RUN NONINTERACTIVE=1 curl -fsSL https://raw.githubusercontent.com/Homebrew/insta
 ENV PATH="/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:${PATH}"
 
 # Install openclaw
-RUN npm install -g openclaw@2026.3.12
+RUN npm install -g openclaw@2026.3.11
 RUN npm install -g playwright && node /app/lib/node_modules/playwright/cli.js install chromium
 
 # Install plugin
