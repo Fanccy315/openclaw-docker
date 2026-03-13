@@ -46,12 +46,10 @@ RUN npm install -g playwright && node /app/lib/node_modules/playwright/cli.js in
 
 # Install plugin
 RUN mkdir -p /home/node/.openclaw/extensions
-# QQ bot
-RUN openclaw plugins install @sliverp/qqbot@latest
 # Matrix
-RUN npm install -g @vector-im/matrix-bot-sdk && \
-    npm install -g @matrix-org/matrix-sdk-crypto-nodejs && \
-    openclaw plugins install @openclaw/matrix
+RUN npm install -g @vector-im/matrix-bot-sdk \
+    @matrix-org/matrix-sdk-crypto-nodejs \
+    markdown-it music-metadata zod
 
 EXPOSE 18789 18790
 ENTRYPOINT ["/bin/bash", "/usr/local/bin/launch.sh"]

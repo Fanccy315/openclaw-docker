@@ -8,7 +8,6 @@
 
 - Based on Node.js 22 with latest OpenClaw installed
 - Pre-installed plugins:
-  - QQ Bot (@sliverp/qqbot)
   - Matrix (@openclaw/matrix)
 - Homebrew for additional package management
 - Ready-to-use docker-compose example
